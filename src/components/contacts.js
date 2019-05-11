@@ -1,33 +1,28 @@
 import React from 'react';
 
+import IndividualContact from './individual';
+
 class ContactList extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<div>
 				<h3>Contacts</h3>
-
-				<div>
-					<h4>_____ A _____</h4>
-					<div>
-					<p> <strong>Alfredo Alonso</strong> (847) 123 1234 </p>
-					<p> <strong>Arturo Mendoza</strong> (310) 321 8859 </p>
-					</div>
-				</div>
-
-				<div>
-					<h4>_____ B _____</h4>
-					<div>
-					<p> <strong>Benito Juarez</strong> (449) 345 9898 </p>
-					</div>
-				</div>
-
-				<div>
-					<h4>_____ F _____</h4>
-					<div>
-					<p> <strong>Frida Kahlo</strong> (555) 553 5351 </p>
-					</div>
-				</div>
-
+				{this.props.listOfContacts.map((contactGroup, idx)=>{
+					return (
+						<div key={idx}>
+							<h4>_____ {contactGroup.letter} _____</h4>
+							{contactGroup.list.map(contact=>{
+								return (
+									<IndividualContact key={contact.id} name={contact.name} phone={contact.phone}></IndividualContact>
+								)
+							})}
+						</div>
+					)
+				})}
 			</div>
 		)
 	}
