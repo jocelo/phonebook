@@ -6,8 +6,11 @@ function App() {
     <div className="App">
       <h1>Phonebook</h1>
       <hr />
-      <button>Add new contact</button>
-      <div></div>
+      <div>
+        Contact Name:<input type="text" name="contactname" />
+        Phone: <input type="text" name="contactphone" />
+        <button type="button">Add Contact</button>
+      </div>
       <hr />
       <div>
         <p>Emergency Contact: Alfredo Alonso (847) 123 1234</p>
@@ -15,6 +18,7 @@ function App() {
       <hr />
       <div>
         <h3>Contacts</h3>
+
         <div>
           <h4>_____ A _____</h4>
           <div>
