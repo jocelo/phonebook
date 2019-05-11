@@ -27,7 +27,33 @@ class Home extends React.Component {
 		emergency: {
 			name: 'Alfredo Alonso',
 			phone: '(847) 123 1234'
-		}}
+		}};
+
+		this.handleSaveContact = this.handleSaveContact.bind(this);
+	}
+
+	handleSaveContact(contactName, contactPhone) {
+		const initialLetter = contactName.substr(0,1).toUpperCase(),
+			contacts = this.state.contacts;
+		let recordFound = contacts.filter(record=>record.letter === initialLetter);
+		
+		if (recordFound.length === 1) {
+			recordFound = recordFound[0];
+		} else {
+			const newLength = contacts.push({
+				letter: initialLetter,
+				list: []
+			})
+			recordFound = contacts[newLength-1];
+		}
+
+		recordFound.list.push({
+			id: recordFound.list.length + 1,
+			name: contactName,
+			phone: contactPhone
+		})
+
+		this.setState({contacts: contacts});
 	}
 
 	render() {
@@ -35,7 +61,7 @@ class Home extends React.Component {
 			<div>
 				<h1>Phonebook</h1>
 				<hr />
-				<NewContact></NewContact>
+				<NewContact saveNewContact={this.handleSaveContact}></NewContact>
 				<hr />
 				<EmergencyContact contact={this.state.emergency}></EmergencyContact>
 				<hr />
