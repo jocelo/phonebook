@@ -5,6 +5,12 @@ import IndividualContact from './individual';
 class ContactList extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.updateEmergencyContact = this.updateEmergencyContact.bind(this);
+	}
+
+	updateEmergencyContact(contactId, letter) {
+		this.props.updateEmergencyContactParent(contactId, letter);
 	}
 
 	render() {
@@ -17,7 +23,13 @@ class ContactList extends React.Component {
 							<h4>_____ {contactGroup.letter} _____</h4>
 							{contactGroup.list.map(contact=>{
 								return (
-									<IndividualContact key={contact.id} name={contact.name} phone={contact.phone}></IndividualContact>
+									<IndividualContact 
+										key={contact.id}
+										id={contact.id}
+										letter={contactGroup.letter}
+										name={contact.name} 
+										phone={contact.phone}
+										setEmergencyContact={this.updateEmergencyContact} ></IndividualContact>
 								)
 							})}
 						</div>

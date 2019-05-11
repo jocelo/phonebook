@@ -3,7 +3,6 @@ import React from 'react'
 class EmergencyContact extends React.Component {
 	constructor(props) {
 		super(props);
-		
 	}
 
 	render() {

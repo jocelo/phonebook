@@ -25,11 +25,13 @@ class Home extends React.Component {
 			]}
 		],
 		emergency: {
+			id: 1,
 			name: 'Alfredo Alonso',
 			phone: '(847) 123 1234'
 		}};
 
 		this.handleSaveContact = this.handleSaveContact.bind(this);
+		this.setEmergencyContact = this.setEmergencyContact.bind(this);
 	}
 
 	handleSaveContact(contactName, contactPhone) {
@@ -56,6 +58,12 @@ class Home extends React.Component {
 		this.setState({contacts: contacts});
 	}
 
+	setEmergencyContact(contactId, contactLetter) {
+		const firstLevel = this.state.contacts.filter(contactGroup=>contactGroup.letter === contactLetter);
+		const secondLevel = firstLevel[0].list.filter(contact=>contact.id === contactId);
+		this.setState({emergency: secondLevel[0]});
+	}
+
 	render() {
 		return (
 			<div>
@@ -65,7 +73,7 @@ class Home extends React.Component {
 				<hr />
 				<EmergencyContact contact={this.state.emergency}></EmergencyContact>
 				<hr />
-				<ContactList listOfContacts={this.state.contacts}></ContactList>
+				<ContactList listOfContacts={this.state.contacts} updateEmergencyContactParent={this.setEmergencyContact}></ContactList>
 			</div>
 		)
 	}
