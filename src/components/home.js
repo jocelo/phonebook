@@ -47,8 +47,6 @@ class Home extends React.Component {
       name: contactName,
       phone: contactPhone
     })
-
-    // this.setState({contacts: contacts});
   }
 
   setEmergencyContact(contactId, contactLetter) {

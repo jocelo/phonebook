@@ -1,4 +1,4 @@
-import { FETCH_CONTACTS, NEW_CONTACT } from '../actions/types';
+import { FETCH_CONTACTS, NEW_CONTACT, SET_EMERGENCY } from '../actions/types';
 
 const initialState = [{
     letter: 'A',
@@ -32,8 +32,12 @@ export default function(state=initialState, action) {
     case NEW_CONTACT:
       return [...state, action.payload]
       break;
+    case SET_EMERGENCY:
+      console.log('setting the emergency contact');
+      console.log(action.payload);
+      break;
     default:
-      return state;
+      return initialState;
   }
   return state;
 }
