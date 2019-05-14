@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addNewContact } from '../actions/contacts';
 
 class NewContact extends React.Component {
 	constructor(props) {
@@ -27,7 +29,8 @@ class NewContact extends React.Component {
 
 	handleSubmitForm() {
 		// launch event to parent state
-		this.props.saveNewContact(this.state.contactName, this.state.contactPhone);
+		// this.props.saveNewContact(this.state.contactName, this.state.contactPhone);
+		this.props.addNewContact();
 		this.emptyState();
 	}
 
@@ -69,4 +72,4 @@ class NewContact extends React.Component {
 	}
 }
 
-export default NewContact;
+export default connect(null, { addNewContact })(NewContact);

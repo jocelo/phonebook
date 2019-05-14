@@ -4,34 +4,27 @@ import NewContact from './add-new';
 import EmergencyContact from './emergency';
 import ContactList from './contacts'
 
+import { connect } from 'react-redux';
+import { fetchContacts } from '../actions/contacts';
+
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			contacts: [{
-				letter: 'A',
-				list: [
-					{id: 1, name: 'Alfredo Alonso', phone: '(847) 123 1234'},
-					{id: 2, name: 'Arturo Mendoza', phone: '(310) 321 8859'}
-			]},{
-				letter: 'B',
-				list: [
-					{id: 1, name: 'Benito Juarez', phone: '(449) 345 9898'}
-			]},{
-				letter: 'F',
-				list: [
-					{id: 1, name: 'Frida Kahlo', phone: '(555) 553 5351'}
-			]}
-		],
-		emergency: {
-			id: 1,
-			name: 'Alfredo Alonso',
-			phone: '(847) 123 1234'
-		}};
+			emergency: {
+				id: 1,
+				name: 'Alfredo Alonso',
+				phone: '(847) 123 1234'
+			}
+		};
 
 		this.handleSaveContact = this.handleSaveContact.bind(this);
 		this.setEmergencyContact = this.setEmergencyContact.bind(this);
+	}
+
+	componentWillMount() {
+		this.props.fetchContacts();
 	}
 
 	handleSaveContact(contactName, contactPhone) {
@@ -55,7 +48,7 @@ class Home extends React.Component {
 			phone: contactPhone
 		})
 
-		this.setState({contacts: contacts});
+		// this.setState({contacts: contacts});
 	}
 
 	setEmergencyContact(contactId, contactLetter) {
@@ -79,4 +72,11 @@ class Home extends React.Component {
 	}
 }
 
-export default Home;
+const mapsStateToProps = state=>({
+	contacts: state.contacts
+})
+
+export default connect(
+	mapsStateToProps,
+	{ fetchContacts }
+)(Home);
