@@ -11,14 +11,6 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      emergency: {
-        id: 1,
-        name: 'Alfredo Alonso',
-        phone: '(847) 123 1234'
-      }
-    };
-
     this.handleSaveContact = this.handleSaveContact.bind(this);
     this.setEmergencyContact = this.setEmergencyContact.bind(this);
     this.getApiData = this.getApiData.bind(this);
@@ -28,20 +20,8 @@ class Home extends React.Component {
     this.props.getContacts();
   }
 
-  componentWillReceiveProps() {
-    console.log( 'componentWillReceiveProps', this.props );
-  }
-
   getApiData() {
     this.props.getApi();
-  }
-
-  handleSaveContact(contactName, contactPhone) {
-
-  }
-
-  setEmergencyContact(contactId, contactLetter) {
-
   }
 
   render() {
