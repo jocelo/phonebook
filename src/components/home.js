@@ -12,7 +12,6 @@ class Home extends React.Component {
     super(props);
 
     this.handleSaveContact = this.handleSaveContact.bind(this);
-    this.setEmergencyContact = this.setEmergencyContact.bind(this);
     this.getApiData = this.getApiData.bind(this);
   }
 
@@ -24,6 +23,10 @@ class Home extends React.Component {
     this.props.getApi();
   }
 
+  handleSaveContact() {
+
+  }
+
   render() {
     return (
       <div>
@@ -33,7 +36,7 @@ class Home extends React.Component {
         <hr />
         <EmergencyContact contact={this.props.emergencyContact}></EmergencyContact>
         <hr />
-        <ContactList listOfContacts={this.props.contacts} updateEmergencyContactParent={this.setEmergencyContact}></ContactList>
+        <ContactList listOfContacts={this.props.contacts}></ContactList>
       </div>
     )
   }

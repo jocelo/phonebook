@@ -28,7 +28,7 @@ class NewContact extends React.Component {
   }
 
   handleSubmitForm() {
-    this.props.addNewContact();
+    this.props.submit({name: this.state.contactName, phone: this.state.contactPhone});
     this.emptyState();
   }
 
@@ -70,4 +70,8 @@ class NewContact extends React.Component {
   }
 }
 
-export default connect(null, { addNewContact })(NewContact);
+const mapActionsToProps = {
+  submit: addNewContact
+}
+
+export default connect(null, mapActionsToProps)(NewContact);

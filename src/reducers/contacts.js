@@ -27,6 +27,21 @@ const initialState = {
   favoriteContact: {name:'Jocelo', phone:'1234'}
 }
 
+function appendToState(contacts, oneLetter, payload) {
+  let singleContact = contacts.filter(contact=>{ return contact.letter === oneLetter});
+  if (singleContact.length === 1) {
+    singleContact = singleContact[0];
+  } else {
+    const lastElementAdded = contacts.push({letter: oneLetter, list: []})
+    singleContact = contacts[lastElementAdded-1];
+  }
+  singleContact.list.push({
+    id: singleContact.list.length+1,
+    name: payload.name,
+    phone: payload.phone
+  });
+  return contacts;
+}
 
 export default function(state=initialState, action) {
   switch(action.type) {
@@ -37,19 +52,21 @@ export default function(state=initialState, action) {
       });
       break;
     case NEW_CONTACT:
-      return [...state, action.payload]
+      return Object.assign({
+        data: appendToState([...state.data], action.payload.letter, action.payload.contactData),
+        favoriteContact: state.favoriteContact
+      });
       break;
     case SET_EMERGENCY:
-    console.log('set emergency', state.data, action.payload);
       return Object.assign({}, { 
         data: state.data, 
         favoriteContact: action.payload
-      })
+      });
       break;
     case FETCH_API:
       return Object.assign({}, {
         data: action.payload
-      })
+      });
       break;
     default:
       return initialState;

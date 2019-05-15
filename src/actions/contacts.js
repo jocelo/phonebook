@@ -1,11 +1,12 @@
 import { FETCH_CONTACTS, NEW_CONTACT, SET_EMERGENCY, FETCH_API } from './types';
 
 export function addNewContact(newContact) {
+  const oneLetter = newContact.name.substr(0,1).toUpperCase();
   return {
     type: NEW_CONTACT,
     payload: {
-      letter: 'V',
-      list: [{ id: 1, name: 'Vicente Fernandez', phone: '(443) 121 1522'}]
+      letter: oneLetter,
+      contactData:{ name: newContact.name, phone: newContact.phone }
     }
   }
 }
