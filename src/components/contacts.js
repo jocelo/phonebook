@@ -2,6 +2,10 @@ import React from 'react';
 import IndividualContact from './individual';
 import './css/contacts.css';
 
+import { apiRequest } from '../actions/contacts';
+
+import { connect } from 'react-redux';
+
 class ContactList extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +19,7 @@ class ContactList extends React.Component {
   }
 
   getApiData() {
-    
+    this.props.getApiData();
   }
 
   render() {
@@ -45,4 +49,8 @@ class ContactList extends React.Component {
   }
 }
 
-export default ContactList;
+const mapActionsToProps = {
+  getApiData: apiRequest
+}
+
+export default connect(null, mapActionsToProps)(ContactList);

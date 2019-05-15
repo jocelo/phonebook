@@ -62,7 +62,7 @@ class NewContact extends React.Component {
     return (
       <div>
         { !this.state.showForm && 
-        <button type="button" onClick={this.handleToggleAddForm}>Creat new Contact</button>
+        <button type="button" onClick={this.handleToggleAddForm}>Add Contact</button>
         }
         {this.renderForm()}
       </div>

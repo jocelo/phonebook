@@ -30,4 +30,4 @@ const mapActionsToProps = {
   markAsEmergency: setEmergencyContact
 }
 
-export default connect(()=>[], mapActionsToProps)(IndividualContact);
+export default connect(null, mapActionsToProps)(IndividualContact);

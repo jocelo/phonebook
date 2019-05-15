@@ -1,0 +1,7 @@
+h3 .header-line {
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 14px;
+  color: gray;
+}

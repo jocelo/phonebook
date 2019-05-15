@@ -46,30 +46,20 @@ function appendToState(contacts, oneLetter, payload) {
 export default function(state=initialState, action) {
   switch(action.type) {
     case FETCH_CONTACTS:
-      return Object.assign({}, { 
-        data: state.data, 
-        favoriteContact: state.favoriteContact
-      });
-      break;
+      return Object.assign({}, state);
     case NEW_CONTACT:
-      return Object.assign({
+      return Object.assign({}, state, {
         data: appendToState([...state.data], action.payload.letter, action.payload.contactData),
-        favoriteContact: state.favoriteContact
       });
-      break;
     case SET_EMERGENCY:
-      return Object.assign({}, { 
-        data: state.data, 
+      return Object.assign({}, state, {
         favoriteContact: action.payload
       });
-      break;
     case FETCH_API:
-      return Object.assign({}, {
+      return Object.assign({}, state, {
         data: action.payload
       });
-      break;
     default:
       return initialState;
   }
-  return state;
 }
