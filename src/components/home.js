@@ -7,6 +7,8 @@ import ContactList from './contacts'
 import { connect } from 'react-redux';
 import { fetchContacts, apiRequest } from '../actions/contacts';
 
+import './css/home.css';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -25,8 +27,11 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Phonebook</h1>
-        <hr />
+        <h1>
+          <div className="left-main-header"><span>&nbsp;</span></div>
+          <span className="main-header">Phonebook</span>
+          <div className="right-main-header"><span>&nbsp;</span></div>
+        </h1>
         <NewContact></NewContact>
         <hr />
         <EmergencyContact contact={this.props.emergencyContact}></EmergencyContact>

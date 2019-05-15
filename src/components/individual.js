@@ -17,10 +17,10 @@ class IndividualContact extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>
+      <div className="">
+        <div className="">
           <strong>{this.props.name}</strong> {this.props.phone} <a onClick={this.markAsEmergency} style={{textDecoration: 'underline', cursor: 'pointer'}}>Set Emergency</a>
-        </p>
+        </div>
       </div>
     )
   }

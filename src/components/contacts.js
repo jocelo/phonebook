@@ -29,7 +29,7 @@ class ContactList extends React.Component {
         {this.props.listOfContacts.map((contactGroup, idx)=>{
           return (
             <div key={idx}>
-              <h4>_____ {contactGroup.letter} _____</h4>
+              <h4>_____________ {contactGroup.letter} _____________</h4>
               {contactGroup.list.map(contact=>{
                 return (
                   <IndividualContact 

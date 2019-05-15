@@ -28,6 +28,9 @@ class NewContact extends React.Component {
   }
 
   handleSubmitForm() {
+    if (this.state.contactName.length === 0 || this.state.contactPhone.length === 0) {
+      return;
+    }
     this.props.submit({name: this.state.contactName, phone: this.state.contactPhone});
     this.emptyState();
   }
