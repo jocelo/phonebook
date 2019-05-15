@@ -1,21 +1,27 @@
 import React from 'react';
 import IndividualContact from './individual';
+import './css/contacts.css';
 
 class ContactList extends React.Component {
   constructor(props) {
     super(props);
 
     this.updateEmergencyContact = this.updateEmergencyContact.bind(this);
+    this.getApiData = this.getApiData.bind(this);
   }
 
   updateEmergencyContact(contactId, letter) {
     this.props.updateEmergencyContactParent(contactId, letter);
   }
 
+  getApiData() {
+    
+  }
+
   render() {
     return (
       <div>
-        <h3>Contacts</h3>
+        <h3>Contacts <a onClick={this.getApiData} className='header-line'>Load data from server</a></h3>
         {this.props.listOfContacts.map((contactGroup, idx)=>{
           return (
             <div key={idx}>

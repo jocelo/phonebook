@@ -23,33 +23,30 @@ const initialState = {
       list: [
         {id: 1, name: 'Rodolfo Neri Vela', phone: '(555) 123 1234'}
     ]} 
-  ]
+  ],
+  favoriteContact: {name:'Jocelo', phone:'1234'}
 }
 
 
 export default function(state=initialState, action) {
   switch(action.type) {
     case FETCH_CONTACTS:
-      return state;
+      return Object.assign({}, { 
+        data: state.data, 
+        favoriteContact: state.favoriteContact
+      });
       break;
     case NEW_CONTACT:
       return [...state, action.payload]
       break;
     case SET_EMERGENCY:
-      console.log('setting the emergency contact');
-      console.log(action.payload);
-      console.log('state', state);
-      /*
+    console.log('set emergency', state.data, action.payload);
       return Object.assign({}, { 
         data: state.data, 
-        favoriteContact: {}
+        favoriteContact: action.payload
       })
-      */
       break;
     case FETCH_API:
-      console.log('!!!!!!!!!!!!!!!!!!!!!!');
-      console.log(action.payload);
-      console.log('!!!!!!!!!!!!!!!!!!!!!!');
       return Object.assign({}, {
         data: action.payload
       })

@@ -28,6 +28,10 @@ class Home extends React.Component {
     this.props.getContacts();
   }
 
+  componentWillReceiveProps() {
+    console.log( 'componentWillReceiveProps', this.props );
+  }
+
   getApiData() {
     this.props.getApi();
   }
@@ -46,9 +50,8 @@ class Home extends React.Component {
         <h1>Phonebook</h1>
         <hr />
         <NewContact saveNewContact={this.handleSaveContact}></NewContact>
-        <button onClick={this.getApiData}>Load data from server</button>
         <hr />
-        <EmergencyContact contact={this.state.emergency}></EmergencyContact>
+        <EmergencyContact contact={this.props.emergencyContact}></EmergencyContact>
         <hr />
         <ContactList listOfContacts={this.props.contacts} updateEmergencyContactParent={this.setEmergencyContact}></ContactList>
       </div>
@@ -57,7 +60,8 @@ class Home extends React.Component {
 }
 
 const mapsStateToProps = state=>({
-  contacts: state.contacts.data
+  contacts: state.contacts.data,
+  emergencyContact: state.contacts.favoriteContact
 });
 
 const mapActionsToProps = {
