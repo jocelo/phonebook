@@ -26,10 +26,8 @@ class IndividualContact extends React.Component {
   }
 }
 
-const mapStateToProps = state => {}
-
 const mapActionsToProps = {
   markAsEmergency: setEmergencyContact
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(IndividualContact);
+export default connect(()=>[], mapActionsToProps)(IndividualContact);
