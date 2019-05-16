@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addNewContact } from '../actions/contacts';
+import { addNewContact, apiRequest } from '../actions/contacts';
+
+import './css/add-new.css';
 
 class NewContact extends React.Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class NewContact extends React.Component {
     this.handleToggleAddForm = this.handleToggleAddForm.bind(this);
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.getApiData = this.getApiData.bind(this);
   }
 
   handleToggleAddForm() {
@@ -50,9 +53,19 @@ class NewContact extends React.Component {
   renderForm() {
     if (this.state.showForm) {
       return (
-        <div>
-          Contact Name:<input type="text" name="contactName" onChange={event=>this.handleFieldChange(event)} value={this.state.contactName} />
-          Phone: <input type="text" name="contactPhone" onChange={event=>this.handleFieldChange(event)} value={this.state.contactPhone} />
+        <div className="add-form">
+          <input type="text" 
+            name="contactName" 
+            placeholder="Contact Name"
+            onChange={event=>this.handleFieldChange(event)} value={this.state.contactName} />
+          <input type="text" 
+            name="contactPhone" 
+            placeholder="Contact Phone"
+            onChange={event=>this.handleFieldChange(event)} value={this.state.contactPhone} />
+          <input type="text" 
+            name="contactEmail" 
+            placeholder="Contact Email"
+            onChange={event=>this.handleFieldChange(event)} value={this.state.contactEmail} />
           <br />
           <button type="button" onClick={this.handleSubmitForm}>Save Contact</button>
           <button type="button" onClick={this.handleCancel}>Cancel</button>
@@ -61,11 +74,18 @@ class NewContact extends React.Component {
     }
   }
 
+  getApiData() {
+    this.props.getApiData();
+  }
+
   render() {
     return (
       <div>
         { !this.state.showForm && 
+          <div>
         <button type="button" onClick={this.handleToggleAddForm}>Add Contact</button>
+        <button onClick={this.getApiData} className='header-line'>Load data from server</button>
+        </div>
         }
         {this.renderForm()}
       </div>
@@ -74,7 +94,8 @@ class NewContact extends React.Component {
 }
 
 const mapActionsToProps = {
-  submit: addNewContact
+  submit: addNewContact,
+  getApiData: apiRequest
 }
 
 export default connect(null, mapActionsToProps)(NewContact);

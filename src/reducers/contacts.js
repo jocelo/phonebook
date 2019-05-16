@@ -4,27 +4,38 @@ const initialState = {
   data: [{
       letter: 'A',
       list: [
-        {id: 1, name: 'Alfonso Cuaron', phone: '(847) 123 1234'},
-        {id: 2, name: 'Adolfo Lopez Mateos', phone: '(310) 321 8859'}
+        {id: 1, name: 'Alfonso Cuaron', phone: '(847) 123 1234', isFavorite: false},
+        {id: 2, name: 'Adolfo Lopez Mateos', phone: '(310) 321 8859', isFavorite: true}
     ]},{
       letter: 'B',
       list: [
-        {id: 1, name: 'Benito Juarez', phone: '(449) 345 9898'}
+        {id: 1, name: 'Benito Juarez', phone: '(449) 345 9898', isFavorite: false}
     ]},{
       letter: 'C',
       list: [
-        {id: 1, name: 'Carlos Slim', phone: '(555) 545 1212'}
+        {id: 1, name: 'Carlos Slim', phone: '(555) 545 1212', isFavorite: false}
     ]},{
       letter: 'F',
       list: [
-        {id: 1, name: 'Frida Kahlo', phone: '(555) 553 5351'}
+        {id: 1, name: 'Frida Kahlo', phone: '(555) 553 5351', isFavorite: false}
     ]},{
       letter: 'R',
       list: [
-        {id: 1, name: 'Rodolfo Neri Vela', phone: '(555) 123 1234'}
+        {id: 1, name: 'Rodolfo Neri Vela', phone: '(555) 123 1234', isFavorite: false}
     ]} 
   ],
-  favoriteContact: {name:'Jocelo', phone:'1234'}
+  favoriteContact: {name:'Adolfo Lopez Mateos', phone:'(310) 321 8859'}
+}
+
+function deepClone(state) {
+  return state.data.map(contacts=>{
+    return Object.assign({}, {
+      letter: contacts.letter,
+      list: contacts.list.map(contact=>{
+        return Object.assign({}, contact);
+      })
+    })
+  });
 }
 
 function appendToState(contacts, oneLetter, payload) {
@@ -52,7 +63,25 @@ export default function(state=initialState, action) {
         data: appendToState([...state.data], action.payload.letter, action.payload.contactData),
       });
     case SET_EMERGENCY:
-      return Object.assign({}, state, {
+      const newState = deepClone(state),
+        selectedLetter = newState.filter(contacts=>{
+        return contacts.letter === action.payload.letter
+      });
+
+      if(selectedLetter.length === 1) {
+        newState.forEach(contacts=>{
+          contacts.list.forEach(contact=>{
+            contact.isFavorite = false;
+          })
+        });
+
+        selectedLetter[0].list.forEach(contact=>{
+          contact.isFavorite = contact.id === action.payload.id;
+        });
+      }
+
+      return Object.assign({}, {
+        data: newState,
         favoriteContact: action.payload
       });
     case FETCH_API:

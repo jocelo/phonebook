@@ -2,8 +2,6 @@ import React from 'react';
 import IndividualContact from './individual';
 import './css/contacts.css';
 
-import { apiRequest } from '../actions/contacts';
-
 import { connect } from 'react-redux';
 
 class ContactList extends React.Component {
@@ -11,25 +9,20 @@ class ContactList extends React.Component {
     super(props);
 
     this.updateEmergencyContact = this.updateEmergencyContact.bind(this);
-    this.getApiData = this.getApiData.bind(this);
   }
 
   updateEmergencyContact(contactId, letter) {
     this.props.updateEmergencyContactParent(contactId, letter);
   }
 
-  getApiData() {
-    this.props.getApiData();
-  }
-
   render() {
     return (
       <div>
-        <h3>Contacts <a onClick={this.getApiData} className='header-line'>Load data from server</a></h3>
         {this.props.listOfContacts.map((contactGroup, idx)=>{
           return (
             <div key={idx}>
-              <h4>_____________ {contactGroup.letter} _____________</h4>
+              <h4>{contactGroup.letter}</h4>
+              <hr />
               {contactGroup.list.map(contact=>{
                 return (
                   <IndividualContact 
@@ -38,6 +31,7 @@ class ContactList extends React.Component {
                     letter={contactGroup.letter}
                     name={contact.name} 
                     phone={contact.phone}
+                    isFavorite={contact.isFavorite}
                     setEmergencyContact={this.updateEmergencyContact} ></IndividualContact>
                 )
               })}
@@ -49,8 +43,4 @@ class ContactList extends React.Component {
   }
 }
 
-const mapActionsToProps = {
-  getApiData: apiRequest
-}
-
-export default connect(null, mapActionsToProps)(ContactList);
+export default connect(null, null)(ContactList);

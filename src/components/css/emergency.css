@@ -1,0 +1,22 @@
+.animate-emergency {
+  width: 25px !important;
+  display: inline-block;
+
+  animation-name: siren;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes siren {
+  from {
+    color: rgba(0, 0, 255, 0.6);
+  }
+
+  50% {
+    color: rgba(255, 0, 0, 0.6);
+  }
+
+  to {
+    color: rgba(0, 0, 255, 0.6);
+  };
+}

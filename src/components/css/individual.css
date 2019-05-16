@@ -1,5 +1,15 @@
 .contact-container {
-	text-align: left;
+  display: inline-block;
+  width: 40%;
+  border: 2px solid gray;
+  margin: 10px;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: rgba(50, 50, 125, 0.1);
+}
+
+.contact-container-flex {
+  text-align: left;
   display: flex;
 }
 
@@ -8,9 +18,14 @@
   flex-direction: column;
 }
 
-.user-avatar > .user-actions {
+.user-actions {
   display: flex;
   flex-direction: row;
+  text-align: center;
+}
+
+.user-actions > div {
+  flex: 1;
 }
 
 .user-data {
@@ -24,4 +39,8 @@
 
 .user-data svg {
   width: 25px !important;
+}
+
+.favorite {
+  color: crimson;
 }

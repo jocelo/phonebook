@@ -9,11 +9,18 @@ import { fetchContacts, apiRequest } from '../actions/contacts';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faStar, faMobileAlt, faEnvelope, faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import { 
+  faUserCircle, 
+  faStar, 
+  faMobileAlt, 
+  faEnvelope, 
+  faUserEdit,
+  faFirstAid 
+} from '@fortawesome/free-solid-svg-icons'
 
 import './css/home.css';
 
-library.add(faUserCircle, faStar, faMobileAlt, faEnvelope, faUserEdit);
+library.add(faUserCircle, faStar, faMobileAlt, faEnvelope, faUserEdit, faFirstAid);
 
 class Home extends React.Component {
   constructor(props) {
