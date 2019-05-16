@@ -6,7 +6,12 @@ export function addNewContact(newContact) {
     type: NEW_CONTACT,
     payload: {
       letter: oneLetter,
-      contactData:{ name: newContact.name, phone: newContact.phone, isFavorite: false }
+      contactData:{ 
+        name: newContact.name, 
+        phone: newContact.phone, 
+        email: newContact.email, 
+        isFavorite: false 
+      }
     }
   }
 }
@@ -36,8 +41,10 @@ export function apiRequest() {
         finalData = [],
         moreDataSimple = moreData.map(contact=>{
         return {
+          id: contact.id,
           name: contact.name,
           phone: contact.phone,
+          email: contact.email,
           isFavorite: false
         }
       });

@@ -44,6 +44,7 @@ class Home extends React.Component {
           <div className="left-main-header"><span>&nbsp;</span></div>
           <span className="main-header">Phonebook</span>
           <div className="right-main-header"><span>&nbsp;</span></div>
+          <div className="brand">powered by react+redux</div>
         </h1>
         <NewContact></NewContact>
         <hr />

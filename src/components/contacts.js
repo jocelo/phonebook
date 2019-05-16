@@ -21,7 +21,7 @@ class ContactList extends React.Component {
         {this.props.listOfContacts.map((contactGroup, idx)=>{
           return (
             <div key={idx}>
-              <h4>{contactGroup.letter}</h4>
+              <h4>{contactGroup.letter} <span className="contact-total">({contactGroup.list.length} contacts)</span></h4>
               <hr />
               {contactGroup.list.map(contact=>{
                 return (
@@ -31,6 +31,7 @@ class ContactList extends React.Component {
                     letter={contactGroup.letter}
                     name={contact.name} 
                     phone={contact.phone}
+                    email={contact.email}
                     isFavorite={contact.isFavorite}
                     setEmergencyContact={this.updateEmergencyContact} ></IndividualContact>
                 )

@@ -4,24 +4,24 @@ const initialState = {
   data: [{
       letter: 'A',
       list: [
-        {id: 1, name: 'Alfonso Cuaron', phone: '(847) 123 1234', isFavorite: false},
-        {id: 2, name: 'Adolfo Lopez Mateos', phone: '(310) 321 8859', isFavorite: true}
+        {id: 1, name: 'Alfonso Cuaron', phone: '(847) 123 1234', email: 'cuaron@gmail.com', isFavorite: false},
+        {id: 2, name: 'Adolfo Lopez Mateos', phone: '(310) 321 8859', email: 'calleadolfo@all.com', isFavorite: true}
     ]},{
       letter: 'B',
       list: [
-        {id: 1, name: 'Benito Juarez', phone: '(449) 345 9898', isFavorite: false}
+        {id: 1, name: 'Benito Juarez', phone: '(449) 345 9898', email:'benito@hotmail.com', isFavorite: false}
     ]},{
       letter: 'C',
       list: [
-        {id: 1, name: 'Carlos Slim', phone: '(555) 545 1212', isFavorite: false}
+        {id: 1, name: 'Carlos Slim', phone: '(555) 545 1212', email:'telmex@bimbo.com', isFavorite: false}
     ]},{
       letter: 'F',
       list: [
-        {id: 1, name: 'Frida Kahlo', phone: '(555) 553 5351', isFavorite: false}
+        {id: 1, name: 'Frida Kahlo', phone: '(555) 553 5351', email:'coyoacan@cdmx.com', isFavorite: false}
     ]},{
       letter: 'R',
       list: [
-        {id: 1, name: 'Rodolfo Neri Vela', phone: '(555) 123 1234', isFavorite: false}
+        {id: 1, name: 'Rodolfo Neri Vela', phone: '(555) 123 1234', email:'nvela@nasa.com', isFavorite: false}
     ]} 
   ],
   favoriteContact: {name:'Adolfo Lopez Mateos', phone:'(310) 321 8859'}
@@ -49,7 +49,9 @@ function appendToState(contacts, oneLetter, payload) {
   singleContact.list.push({
     id: singleContact.list.length+1,
     name: payload.name,
-    phone: payload.phone
+    phone: payload.phone,
+    email: payload.email,
+    isFavorite: false
   });
   return contacts;
 }

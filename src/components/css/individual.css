@@ -18,6 +18,11 @@
   flex-direction: column;
 }
 
+.user-avatar > svg {
+  background-color: white;
+  border-radius: 40px;
+}
+
 .user-actions {
   display: flex;
   flex-direction: row;

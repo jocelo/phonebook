@@ -11,7 +11,8 @@ class NewContact extends React.Component {
     this.state = {
       showForm: false,
       contactName: '',
-      contactPhone: ''
+      contactPhone: '',
+      contactEmail: ''
     }
 
     this.handleToggleAddForm = this.handleToggleAddForm.bind(this);
@@ -31,10 +32,10 @@ class NewContact extends React.Component {
   }
 
   handleSubmitForm() {
-    if (this.state.contactName.length === 0 || this.state.contactPhone.length === 0) {
+    if (this.state.contactName.length === 0 || this.state.contactPhone.length === 0  || this.state.contactPhone.length === 0) {
       return;
     }
-    this.props.submit({name: this.state.contactName, phone: this.state.contactPhone});
+    this.props.submit({name: this.state.contactName, phone: this.state.contactPhone, email: this.state.contactEmail});
     this.emptyState();
   }
 
@@ -46,7 +47,8 @@ class NewContact extends React.Component {
     this.setState({
       showForm: false,
       contactName: '',
-      contactPhone: ''
+      contactPhone: '',
+      contactEmail: ''
     });
   }
   

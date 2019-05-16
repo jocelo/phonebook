@@ -1,6 +1,8 @@
 h1 {
   border-bottom: 2px solid gray;
   margin-bottom: 10px;
+  text-align: left;
+  position: relative;
 }
 
 .main-header {
@@ -33,4 +35,12 @@ h1 {
   height: 100%;
   display: block;
   border-bottom-left-radius: 15px;
+}
+
+.brand {
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
+  font-size: 15px;
+  color: rgba(155, 155, 155, 0.5);
 }
