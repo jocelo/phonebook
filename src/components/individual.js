@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setEmergencyContact } from '../actions/contacts';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './css/individual.css';
+
 class IndividualContact extends React.Component {
   
   constructor(props) {
@@ -17,9 +20,20 @@ class IndividualContact extends React.Component {
 
   render() {
     return (
-      <div className="">
-        <div className="">
-          <strong>{this.props.name}</strong> {this.props.phone} <a onClick={this.markAsEmergency} style={{textDecoration: 'underline', cursor: 'pointer'}}>Set Emergency</a>
+      <div className="contact-container">
+        <div className="caca2">
+          <FontAwesomeIcon icon="user-circle" size="4x" />
+          <p>
+            <strong>{this.props.name}</strong>
+          </p>
+          <p>
+            <FontAwesomeIcon icon="mobile-alt" />{this.props.phone}
+          </p>
+          <p>
+            <FontAwesomeIcon icon="envelope" />{this.props.email || '-'}
+          </p>
+          
+            <a onClick={this.markAsEmergency} style={{textDecoration: 'underline', cursor: 'pointer'}}>Set Emergency</a>
         </div>
       </div>
     )
