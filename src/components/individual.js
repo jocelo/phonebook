@@ -21,20 +21,28 @@ class IndividualContact extends React.Component {
   render() {
     return (
       <div className="contact-container">
-        <div className="caca2">
-          <FontAwesomeIcon icon="user-circle" size="4x" />
-          <p>
-            <strong>{this.props.name}</strong>
-          </p>
-          <p>
-            <FontAwesomeIcon icon="mobile-alt" />{this.props.phone}
-          </p>
-          <p>
-            <FontAwesomeIcon icon="envelope" />{this.props.email || '-'}
-          </p>
+
           
-            <a onClick={this.markAsEmergency} style={{textDecoration: 'underline', cursor: 'pointer'}}>Set Emergency</a>
-        </div>
+          <div className="user-avatar">
+            <FontAwesomeIcon icon="user-circle" size="4x" />
+            <div className="user-actions">
+              <FontAwesomeIcon icon="user-edit" className="pointer hoverable" />
+              <FontAwesomeIcon icon="star" className="pointer hoverable" onClick={this.markAsEmergency} />              
+            </div>
+          </div>
+
+          <div className="user-data">
+            <p>
+              <strong>{this.props.name}</strong>
+            </p>
+            <p>
+              <FontAwesomeIcon icon="mobile-alt" />{this.props.phone}
+            </p>
+            <p>
+              <FontAwesomeIcon icon="envelope" />{this.props.email || '-'}
+            </p>
+          </div>
+
       </div>
     )
   }

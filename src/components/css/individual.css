@@ -1,3 +1,27 @@
 .contact-container {
 	text-align: left;
+  display: flex;
+}
+
+.user-avatar {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-avatar > .user-actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-data {
+  margin-left: 10px;
+}
+
+.user-data > p:nth-child(1) {
+  font-size: 1.3rem;
+  margin-left: 5px;
+}
+
+.user-data svg {
+  width: 25px !important;
 }
